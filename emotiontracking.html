@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Emotions - FeelFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4A90E2;
+            --dark-blue: #2A568A;
+            --light-blue: #EAF4FF;
+            --text-color: #333;
+            --bg-color: #F8FBFF;
+            --happy-color: #FFD700;
+            --calm-color: #7EC0EE;
+            --anxious-color: #FF6347;
+            --sad-color: #5D5D81;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .navbar {
+            background-color: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 25px;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar a:hover {
+            color: var(--primary-blue);
+        }
+
+        .emotion-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .emotion-section h2 {
+            color: var(--dark-blue);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .emotion-section p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .emotion-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+
+        .emotion-choices {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .emotion-choice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .emotion-choice input[type="radio"] {
+            display: none;
+        }
+
+        .emotion-choice input[type="radio"]:checked + .icon-label {
+            border: 3px solid var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .icon-label {
+            display: inline-block;
+            font-size: 2.5em;
+            padding: 15px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            transition: border 0.2s ease, transform 0.2s ease;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        .submit-button {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            border: none;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .history-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .history-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto;
+            background-color: #ccc;
+            opacity: 0.8;
+            transition: transform 0.2s ease;
+        }
+        
+        .history-dot:hover {
+            transform: scale(1.1);
+        }
+
+        .happy { background-color: var(--happy-color); }
+        .calm { background-color: var(--calm-color); }
+        .anxious { background-color: var(--anxious-color); }
+        .sad { background-color: var(--sad-color); }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html">FeelFlow</a>
+        <div>
+            <a href="#">Journal</a>
+            <a href="emotion-tracker.html">Track Emotions</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="emotion-section">
+            <div class="container">
+                <h2>Track Your Emotions</h2>
+                <p>Select your current mood and add a brief note to track your emotional journey.</p>
+                <div class="emotion-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label>How are you feeling right now?</label>
+                            <div class="emotion-choices">
+                                <label class="emotion-choice">
+                                    <input type="radio" name="emotion" value="happy">
+                                    <span class="icon-label">😀</span>
+                                    <span>Happy</span>
+                                </label>
+                                <label class="emotion-choice">
+                                    <input type="radio" name="emotion" value="calm">
+                                    <span class="icon-label">😌</span>
+                                    <span>Calm</span>
+                                </label>
+                                <label class="emotion-choice">
+                                    <input type="radio" name="emotion" value="anxious">
+                                    <span class="icon-label">😬</span>
+                                    <span>Anxious</span>
+                                </label>
+                                <label class="emotion-choice">
+                                    <input type="radio" name="emotion" value="sad">
+                                    <span class="icon-label">😔</span>
+                                    <span>Sad</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">What's on your mind?</label>
+                            <textarea id="notes" name="notes" placeholder="Write a short note about your feelings..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Log Emotion</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <div class="container">
+                <h2>Your Emotional History</h2>
+                <p>A quick look at your recent emotional patterns.</p>
+                <div class="history-grid">
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot sad"></div>
+                    <div class="history-dot calm"></div>
+                    <div class="history-dot anxious"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot calm"></div>
+                    <div class="history-dot sad"></div>
+                    <div class="history-dot anxious"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot sad"></div>
+                    <div class="history-dot calm"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot calm"></div>
+                    <div class="history-dot calm"></div>
+                    <div class="history-dot happy"></div>
+                    <div class="history-dot anxious"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FeelFlow. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
