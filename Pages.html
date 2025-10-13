@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FeelFlow - Your Digital Sanctuary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-blue: #4A90E2;
+      --dark-blue: #2A568A;
+      --light-blue: #EAF4FF;
+      --text-color: #333;
+      --bg-color: #F8FBFF;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+      color: var(--white);
+      padding: 80px 20px 100px;
+      text-align: center;
+      border-bottom-left-radius: 60px;
+      border-bottom-right-radius: 60px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 3em;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-weight: 300;
+      font-size: 1.15em;
+      max-width: 650px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: var(--white);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    nav a {
+      color: var(--dark-blue);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-size: 0.95em;
+    }
+
+    nav a:hover {
+      background-color: var(--primary-blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary-blue);
+      font-weight: 600;
+      margin-bottom: 50px;
+      font-size: 2em;
+    }
+
+    textarea, input, select {
+      width: 100%;
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 1em;
+      transition: 0.3s;
+      background-color: #fff;
+    }
+
+    textarea:focus, input:focus, select:focus {
+      border-color: var(--primary-blue);
+      outline: none;
+      box-shadow: 0 0 8px rgba(74,144,226,0.3);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .card {
+      background-color: var(--white);
+      border-radius: 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      padding: 35px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .mood-options {
+      display: flex;
+      justify-content: space-around;
+      font-size: 2em;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .affirmation {
+      background: linear-gradient(135deg, var(--light-blue), #ffffff);
+      padding: 40px;
+      text-align: center;
+      border-radius: 25px;
+      font-size: 1.3em;
+      color: var(--dark-blue);
+      font-weight: 500;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .affirmation:hover {
+      transform: scale(1.02);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 1em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #777;
+      font-size: 0.9em;
+      background-color: #fff;
+      border-top: 1px solid #eaeaea;
+      margin-top: 80px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    .section-divider {
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary-blue);
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FeelFlow</h1>
+    <p>Your peaceful space to reflect, express, and grow — one entry at a time.</p>
+  </header>
+
+  <nav>
+    <a href="#journal">Journal</a>
+    <a href="#mood">Mood</a>
+    <a href="#insights">Insights</a>
+    <a href="#affirmations">Affirmations</a>
+    <a href="#meditation">Meditation</a>
+    <a href="#goals">Goals</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#profile">Profile</a>
+    <a href="#about">About</a>
+    <a href="#resources">Resources</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- JOURNAL -->
+  <section id="journal">
+    <h2>Journal</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p><strong>Date:</strong> <span id="journalDate"></span></p>
+      <textarea placeholder="What’s on your mind today? Write without judgment..."></textarea>
+      <button class="btn">Save Entry</button>
+    </div>
+  </section>
+
+  <!-- MOOD -->
+  <section id="mood">
+    <h2>Mood Tracker</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p>Select how you feel right now:</p>
+      <div class="mood-options">
+        <span>😞</span>
+        <span>😐</span>
+        <span>🙂</span>
+        <span>😄</span>
+        <span>🤩</span>
+      </div>
+      <textarea placeholder="What influenced your mood today?"></textarea>
+      <button class="btn">Save Mood</button>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section id="insights">
+    <h2>Insights</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p><strong>Weekly Summary:</strong> You’ve been most reflective during evenings and calm on weekends.</p>
+      <p>Keep journaling consistently to reveal more emotional patterns and self-awareness.</p>
+    </div>
+  </section>
+
+  <!-- AFFIRMATIONS -->
+  <section id="affirmations">
+    <h2>Daily Affirmations</h2>
+    <div class="section-divider"></div>
+    <div class="affirmation" id="affirmationText">“I am enough exactly as I am.”</div>
+    <div style="text-align:center; margin-top:25px;">
+      <button class="btn" onclick="newAffirmation()">New Affirmation</button>
+    </div>
+  </section>
+
+  <!-- MEDITATION -->
+  <section id="meditation">
+    <h2>Meditation & Mindfulness</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p><strong>Take a moment:</strong> Close your eyes and breathe deeply. Inhale peace, exhale tension.</p>
+      <p>Try a 5-minute mindfulness timer or short breathing exercise when you need to recentre yourself.</p>
+      <button class="btn">Start a Session</button>
+    </div>
+  </section>
+
+  <!-- GOALS -->
+  <section id="goals">
+    <h2>Goals & Intentions</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <input type="text" placeholder="Set a new goal..." />
+      <button class="btn">Add Goal</button>
+      <ul>
+        <li>🌿 Practice gratitude daily</li>
+        <li>☀️ Morning walks three times a week</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p><strong>Milestone:</strong> 10 days of continuous journaling!</p>
+      <p><em>Reflection:</em> “I’m learning to observe my emotions with compassion instead of control.”</p>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile">
+    <h2>Your Profile</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p><strong>Name:</strong> Alex</p>
+      <p><strong>Theme:</strong> Light Mode</p>
+      <button class="btn">Edit Profile</button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About FeelFlow</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p>FeelFlow is more than just a journal — it’s your safe space for mindfulness and growth. 
+        Our mission is to help you slow down, reflect, and reconnect with your emotional world, 
+        one peaceful moment at a time.</p>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <h2>Resources</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <ul>
+        <li><a href="#" target="_blank">🧘 Guided Meditation Audio</a></li>
+        <li><a href="#" target="_blank">📘 Emotional Resilience Article</a></li>
+        <li><a href="#" target="_blank">💬 Mental Health Helplines</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact & Support</h2>
+    <div class="section-divider"></div>
+    <div class="card">
+      <p>Have feedback or questions? We’d love to hear from you.</p>
+      <input type="text" placeholder="Your Name" />
+      <input type="email" placeholder="Your Email" />
+      <textarea placeholder="Your Message"></textarea>
+      <button class="btn">Send Message</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 FeelFlow. All rights reserved.</p>
+    <p>Crafted with calm and care 💙</p>
+  </footer>
+
+  <script>
+    // Auto date for journal
+    document.getElementById("journalDate").textContent = new Date().toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+    // Affirmations
+    const affirmations = [
+      "I am worthy of peace and presence.",
+      "Calmness is my natural state.",
+      "I am growing at my own beautiful pace.",
+      "I am in tune with my emotions and needs.",
+      "My mind is clear, my heart is open."
+    ];
+
+    function newAffirmation() {
+      const random = affirmations[Math.floor(Math.random() * affirmations.length)];
+      document.getElementById("affirmationText").textContent = `"${random}"`;
+    }
+  </script>
+
+</body>
+</html>
